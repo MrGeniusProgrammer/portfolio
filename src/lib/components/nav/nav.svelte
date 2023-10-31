@@ -3,6 +3,7 @@
 	import { cn } from '$lib/utils';
 	import { onMount } from 'svelte';
 	import { navToggle, toggle } from './store';
+	import { base } from '$app/paths';
 
 	let element: HTMLElement;
 	onMount(() => {
@@ -13,7 +14,7 @@
 <nav
 	bind:this={element}
 	class="flex justify-between items-center md:px-32 px-4 md:py-6 py-4 bg-transparent backdrop-blur-sm fixed top-0 left-0 w-screen z-50 isolate">
-	<h1 class="font-semibold text-2xl"><a href="/">Abdullah Ayesha</a></h1>
+	<h1 class="font-semibold text-2xl"><a href={base}>Abdullah Ayesha</a></h1>
 	<div
 		class="h-full md:hidden cursor-pointer w-10 flex flex-col items-center justify-end space-y-2 [&>div]:h-1 [&>div]:w-full [&>div]:transition-all [&>div]:duration-300 [&>div]:ease-in-out z-20"
 		on:click={toggle}>
