@@ -1,10 +1,11 @@
 <script lang="ts">
 	import { Nav, NavItem } from '$lib/components/nav';
+	import { base } from '$app/paths';
 </script>
 
 <Nav>
-	<NavItem href="/about">About</NavItem>
-	<NavItem href="/projects">Projects</NavItem>
+	<NavItem href="{base}/about">About</NavItem>
+	<NavItem href="{base}/projects">Projects</NavItem>
 </Nav>
 
 <div class="[&>section]:bg-background overflow-x-hidden">
