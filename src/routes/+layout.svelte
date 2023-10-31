@@ -1,4 +1,15 @@
-<slot />
+<script lang="ts">
+	import { Nav, NavItem } from '$lib/components/nav';
+</script>
+
+<Nav>
+	<NavItem href="/about">About</NavItem>
+	<NavItem href="/projects">Projects</NavItem>
+</Nav>
+
+<div class="[&>section]:bg-background overflow-x-hidden">
+	<slot />
+</div>
 
 <style>
 	@tailwind base;
@@ -11,7 +22,7 @@
 			--color-foreground: 0 0% 100%;
 
 			--color-muted: 0 0% 52%;
-			--color-muted-foreground: 0 0% 76%;
+			--color-muted-foreground: 0 0% 80%;
 
 			--color-popover: 0 0% 100%;
 			--color-popover-foreground: 240 10% 3.9%;
@@ -42,5 +53,9 @@
 
 	:global(*) {
 		scroll-behavior: smooth;
+	}
+
+	:global(body) {
+		@apply bg-background;
 	}
 </style>
