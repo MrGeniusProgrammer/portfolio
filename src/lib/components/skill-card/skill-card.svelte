@@ -25,13 +25,13 @@
 	on:inview={() => progressing.set(percentage * 100)}
 	use:inview={{ rootMargin: '-5%' }}
 	class={cn(
-		'md:space-x-4 bg-muted/5 rounded-lg py-6 px-4 col-span-2 row-span-2 md:row-span-1 duration-1000 ease-out grid grid-cols-[subgrid] grid-rows-[subgrid] opacity-0 translate-y-2/4 [&[data-inview="true"]]:translate-y-0 [&[data-inview="true"]]:opacity-100',
+		'bg-muted/5 rounded-lg py-6 px-4 duration-1000 ease-out flex flex-col space-y-4 h-fit opacity-0 translate-y-2/4 [&[data-inview="true"]]:translate-y-0 [&[data-inview="true"]]:opacity-100',
 		className,
 	)}
 	{...$$restProps}>
 	<h1 class="font-semibold text-lg">{skillText}</h1>
 	<div
-		class="flex justify-end items-center py-1 isolate px-4 bg-background rounded-full relative overflow-hidden md:row-span-1 md:col-span-1 row-span-2 col-span-2">
+		class="flex justify-end items-center py-1 isolate px-4 bg-background rounded-full relative overflow-hidden">
 		<div
 			class="absolute right-full w-full h-full -z-10 bg-primary"
 			style={`translate: ${$progressing}% 0%;`} />

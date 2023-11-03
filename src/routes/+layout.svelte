@@ -4,7 +4,7 @@
 </script>
 
 <Nav>
-	<NavItem href="{base}/about">About</NavItem>
+	<!-- <NavItem href="{base}/about">About</NavItem> -->
 	<NavItem href="{base}/projects">Projects</NavItem>
 </Nav>
 
