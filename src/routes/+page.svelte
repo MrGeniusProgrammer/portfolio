@@ -80,7 +80,7 @@
 	</div>
 </section>
 
-<section class="w-screen px-4 md:px-16 pt-32" id="skills">
+<section class="w-screen px-4 md:px-16 pt-32 pb-16" id="skills">
 	<div
 		class="grid grid-cols-1 lg:grid-cols-3 md:grid-cols-2 auto-rows-[auto_auto] gap-4 place-content-center">
 		<SkillCard skillText="Javscript" percentage={0.82} />
