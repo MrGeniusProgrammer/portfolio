@@ -1,5 +1,10 @@
 import { tailwindcssScale } from "./tailwindcss-scale";
 import type { Config } from "tailwindcss";
+import tailwindcssAnimate from "tailwindcss-animate";
+import tailwindcssTypography from "@tailwindcss/typography";
+import tailwindcssForms from "@tailwindcss/forms";
+import tailwindcssAspectRatio from "@tailwindcss/aspect-ratio";
+import tailwindcssContainerQueries from "@tailwindcss/container-queries";
 
 export default {
   content: [
@@ -24,5 +29,10 @@ export default {
       prefix: "text",
       ratio: 1.333,
     }),
+    tailwindcssAnimate,
+    tailwindcssAspectRatio,
+    tailwindcssTypography(),
+    tailwindcssForms(),
+    tailwindcssContainerQueries,
   ],
 } satisfies Config;
