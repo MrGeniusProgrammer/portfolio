@@ -1,5 +1,3 @@
-import { allPosts } from "content-collections";
-
 export default function Home() {
   return (
     <div>

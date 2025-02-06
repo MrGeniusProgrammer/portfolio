@@ -10,7 +10,6 @@ import {
 } from "@content-collections/mdx";
 import rehypeAutolinkHeadings from "rehype-autolink-headings";
 import rehypeSlug from "rehype-slug";
-import remarkFrontmatter from "remark-frontmatter";
 import remarkGfm from "remark-gfm";
 
 const compileMDX = (
@@ -22,7 +21,7 @@ const compileMDX = (
   rehypePlugins = rehypePlugins.concat([rehypeSlug, rehypeAutolinkHeadings]);
 
   let remarkPlugins = options?.remarkPlugins || [];
-  remarkPlugins = remarkPlugins.concat([remarkFrontmatter, remarkGfm]);
+  remarkPlugins = remarkPlugins.concat([remarkGfm]);
 
   return baseCompileMDX(context, document, {
     rehypePlugins,
