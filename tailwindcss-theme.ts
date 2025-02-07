@@ -29,17 +29,14 @@ export const tailwindcssTheme = (options: Options) => {
 
   const colors: Record<string, string> = {};
 
-  for (const [key, pallete] of Object.entries(generatedTheme.palettes)) {
+  for (const key of Object.keys(generatedTheme.palettes)) {
     for (const palleteTone of options.palleteTones) {
-      const tone = pallete.tone(palleteTone);
       colors[`${snakeCaseFromCamelCase(key)}-${palleteTone}`] =
         `var(--${snakeCaseFromCamelCase(key)}-${palleteTone})`;
     }
   }
 
-  for (const [key, value] of Object.entries(
-    generatedTheme.schemes.light.toJSON(),
-  )) {
+  for (const key of Object.keys(generatedTheme.schemes.light.toJSON())) {
     colors[`${snakeCaseFromCamelCase(key)}`] =
       `var(--${snakeCaseFromCamelCase(key)})`;
   }
