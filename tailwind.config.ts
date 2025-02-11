@@ -5,7 +5,7 @@ import tailwindcssTypography from "@tailwindcss/typography";
 import tailwindcssForms from "@tailwindcss/forms";
 import tailwindcssAspectRatio from "@tailwindcss/aspect-ratio";
 import tailwindcssContainerQueries from "@tailwindcss/container-queries";
-import { tailwindcssTheme } from "./tailwindcss-theme";
+import { tailwindcssThemeColors } from "./tailwindcss-theme-colors";
 
 export default {
   darkMode: ["class"],
@@ -48,17 +48,22 @@ export default {
   plugins: [
     tailwindcssScale({
       base: 1,
-      prefix: "default",
+      prefix: "scale",
       ratio: 1.333,
     }),
     tailwindcssScale({
       base: 1,
-      prefix: "body",
+      prefix: "scale-body",
       ratio: 1.333,
     }),
     tailwindcssScale({
       base: 1,
-      prefix: "text",
+      prefix: "scale-icon",
+      ratio: 1.333,
+    }),
+    tailwindcssScale({
+      base: 1,
+      prefix: "scale-text",
       ratio: 1.333,
     }),
     tailwindcssAnimate,
@@ -66,10 +71,11 @@ export default {
     tailwindcssTypography(),
     tailwindcssForms(),
     tailwindcssContainerQueries,
-    tailwindcssTheme({
+    tailwindcssThemeColors({
       sourceColor: "#6750A4",
       customColors: {},
-      palleteTones: [0, 5, 10, 20, 30, 40, 50, 60, 70, 80, 90, 95, 100],
+      palleteTones: [5, 10, 20, 30, 40, 50, 60, 70, 80, 90, 95],
+      processName: (value) => `mc-${value}`,
     }),
   ],
 } satisfies Config;
