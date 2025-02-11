@@ -1,22 +1,34 @@
 import plugin from "tailwindcss/plugin";
 
-interface Option<T extends string> {
-	prefix: T;
+interface Option {
+	processVariableName: (value: string) => string;
+	sizeVariableNames?: string[];
 	base: number;
 	ratio: number;
 }
 
-const tailwindcssScaleConfig = <T extends string>(options: Option<T>) => ({
-	[`${options.prefix}-xxs`]: `${options.base * options.ratio ** -3}em`,
-	[`${options.prefix}-xs`]: `${options.base * options.ratio ** -2}em`,
-	[`${options.prefix}-s`]: `${options.base * options.ratio ** -1}em`,
-	[`${options.prefix}-m`]: `${options.base}em`,
-	[`${options.prefix}-l`]: `${options.base * options.ratio}em`,
-	[`${options.prefix}-xl`]: `${options.base * options.ratio ** 2}em`,
-	[`${options.prefix}-xxl`]: `${options.base * options.ratio ** 3}em`
-});
+const tailwindcssScaleConfig = ({
+	processVariableName,
+	sizeVariableNames = ["2xs", "xs", "s", "m", "l", "xl", "2xl"],
+	base,
+	ratio
+}: Option) => {
+	if (sizeVariableNames.length % 2 === 0) {
+		throw new Error("size varaiblae names must have a midle or base size");
+	}
 
-export const tailwindcssScale = <T extends string>(options: Option<T>) =>
+	const middleIndex = Math.floor(sizeVariableNames.length / 2);
+	const entries = sizeVariableNames.map((name, index) => [
+		processVariableName(name),
+		`${base * ratio ** (index - middleIndex)}em`
+	]);
+
+	console.log(entries);
+
+	return Object.fromEntries(entries);
+};
+
+export const tailwindcssScale = (options: Option) =>
 	plugin(() => {}, {
 		theme: {
 			extend: {

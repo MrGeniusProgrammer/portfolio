@@ -1,30 +1,32 @@
+"use client";
+
 import { SiInstagram } from "@icons-pack/react-simple-icons";
 
 export function HeroSection() {
 	return (
 		<section className="flex size-full">
-			<div className="flex flex-col gap-scale-m border border-r-current py-scale-l pl-scale-xl pr-scale-l text-mc-neutral-900">
+			<div className="gap-scale-m py-scale-l pl-scale-3xl pr-scale-l text-mc-neutral-900 flex flex-col border-0 border-r border-r-current">
 				<a href="">
-					<SiInstagram className="size-scale-icon-m" />
+					<SiInstagram className="size-scale-m" />
 				</a>
 				<a href="">
-					<SiInstagram className="size-scale-icon-m" />
+					<SiInstagram className="size-scale-m" />
 				</a>
 				<a href="">
-					<SiInstagram className="size-scale-icon-m" />
+					<SiInstagram className="size-scale-m" />
 				</a>
 				<a href="">
-					<SiInstagram className="size-scale-icon-m" />
+					<SiInstagram className="size-scale-m" />
 				</a>
 				<a href="">
-					<SiInstagram className="size-scale-icon-m" />
+					<SiInstagram className="size-scale-m" />
 				</a>
 			</div>
-			<div className="px-scale-xl py-scale-l">
+			<div className="px-scale-xl py-scale-l size-full">
 				<div className="relative size-full">
 					<div className="">img</div>
-					<div className="absolute left-0 top-0">Get in Contact</div>
-					<div className="absolute bottom-0 right-0">
+					<div className="absolute top-0 left-0">Get in Contact</div>
+					<div className="absolute right-0 bottom-0">
 						<h1 className="mb-scale-xs text-lg">
 							A Fullstack Developer
 						</h1>

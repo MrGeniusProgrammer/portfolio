@@ -50,7 +50,7 @@ export const tailwindcssThemeColors = ({
 	}
 
 	return plugin(
-		({ addUtilities }) => {
+		({ addBase }) => {
 			const utilities: Record<string, Record<string, string>> = {};
 
 			for (const [key, pallete] of Object.entries(
@@ -87,7 +87,7 @@ export const tailwindcssThemeColors = ({
 					: modeUtilities;
 			}
 
-			addUtilities(utilities);
+			addBase(utilities);
 		},
 		{
 			theme: {

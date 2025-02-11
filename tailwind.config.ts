@@ -8,7 +8,6 @@ import { tailwindcssScale } from "./tailwindcss-scale";
 import { tailwindcssThemeColors } from "./tailwindcss-theme-colors";
 
 export default {
-	darkMode: ["class"],
 	content: [
 		"./src/pages/**/*.{js,ts,jsx,tsx,mdx}",
 		"./src/components/**/*.{js,ts,jsx,tsx,mdx}",
@@ -16,11 +15,6 @@ export default {
 	],
 	theme: {
 		extend: {
-			borderRadius: {
-				lg: "var(--radius)",
-				md: "calc(var(--radius) - 2px)",
-				sm: "calc(var(--radius) - 4px)"
-			},
 			keyframes: {
 				"accordion-down": {
 					from: {
@@ -48,29 +42,26 @@ export default {
 	plugins: [
 		tailwindcssScale({
 			base: 1,
-			prefix: "scale",
-			ratio: 1.333
-		}),
-		tailwindcssScale({
-			base: 1,
-			prefix: "scale-body",
-			ratio: 1.333
-		}),
-		tailwindcssScale({
-			base: 1,
-			prefix: "scale-icon",
-			ratio: 1.333
-		}),
-		tailwindcssScale({
-			base: 1,
-			prefix: "scale-text",
-			ratio: 1.333
+			processVariableName: (value) => `scale-${value}`,
+			sizeVariableNames: [
+				"4xs",
+				"3xs",
+				"2xs",
+				"xs",
+				"s",
+				"m",
+				"l",
+				"xl",
+				"2xl",
+				"3xl",
+				"4xl"
+			],
+			ratio: 1.676
 		}),
 		tailwindcssAnimate,
 		tailwindcssAspectRatio,
 		tailwindcssTypography(),
 		tailwindcssForms(),
-		tailwindcssContainerQueries,
 		tailwindcssThemeColors({
 			sourceColor: "#6750A4",
 			customColors: {},
