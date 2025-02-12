@@ -23,8 +23,6 @@ const tailwindcssScaleConfig = ({
 		`${base * ratio ** (index - middleIndex)}em`
 	]);
 
-	console.log(entries);
-
 	return Object.fromEntries(entries);
 };
 

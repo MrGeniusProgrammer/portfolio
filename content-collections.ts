@@ -87,35 +87,6 @@ const caseStudies = defineCollection({
 	}
 });
 
-const changelogs = defineCollection({
-	name: "changelog",
-	directory: "src/content/changelogs",
-	include: "**/*.mdx",
-	schema: (z) => ({
-		title: z.string(),
-		overview: z.string(),
-		attachment: z.string(),
-		tags: z.string().array(),
-		created: z.coerce.date(),
-		updated: z.coerce.date()
-	}),
-	transform: async (document, context) => {
-		const mdx = await compileMDX(context, document);
-
-		return {
-			mdx,
-			title: document.title,
-			overview: document.overview,
-			attachment: document.attachment,
-			tags: document.tags,
-			created: document.created,
-			updated: document.updated,
-			meta: document._meta,
-			raw: document.content
-		};
-	}
-});
-
 export default defineConfig({
-	collections: [blogs, caseStudies, changelogs]
+	collections: [blogs, caseStudies]
 });

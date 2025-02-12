@@ -1,9 +1,9 @@
 import tailwindcssAspectRatio from "@tailwindcss/aspect-ratio";
-import tailwindcssContainerQueries from "@tailwindcss/container-queries";
 import tailwindcssForms from "@tailwindcss/forms";
 import tailwindcssTypography from "@tailwindcss/typography";
 import type { Config } from "tailwindcss";
 import tailwindcssAnimate from "tailwindcss-animate";
+import { ThemeKind } from "./src/lib/entities/theme";
 import { tailwindcssScale } from "./tailwindcss-scale";
 import { tailwindcssThemeColors } from "./tailwindcss-theme-colors";
 
@@ -63,10 +63,26 @@ export default {
 		tailwindcssTypography(),
 		tailwindcssForms(),
 		tailwindcssThemeColors({
-			sourceColor: "#6750A4",
-			customColors: {},
 			palleteTones: [5, 10, 20, 30, 40, 50, 60, 70, 80, 90, 95],
-			processName: (value) => `mc-${value}`
+			processVariableName: (value) => `mc-${value}`,
+			themes: {
+				[ThemeKind.DEFAULT]: {
+					sourceColor: "#6750A4",
+					customColors: {}
+				},
+				[ThemeKind.BACKEND_DEVELOPER]: {
+					sourceColor: "#0f0f0f"
+				},
+				[ThemeKind.FULLSTACK_DEVELOPER]: {
+					sourceColor: "#ffffff"
+				},
+				[ThemeKind.UX_DEVELOPER]: {
+					sourceColor: "#f0f0f0"
+				},
+				[ThemeKind.UI_DEVELOPER]: {
+					sourceColor: "#000000"
+				}
+			}
 		})
 	]
 } satisfies Config;
