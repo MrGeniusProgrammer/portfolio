@@ -3,7 +3,7 @@
 import { useTheme } from "../hooks/use-theme";
 
 export function HeroSection() {
-	const [] = useTheme();
+	const [theme, setTheme] = useTheme();
 
 	return (
 		<section className="px-scale-3xl py-scale-xl size-full">

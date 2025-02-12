@@ -8,7 +8,7 @@ export function useTheme() {
 	// Initialize theme state with a default value
 	const [theme, setTheme] = useLocalStorage<ThemeKind>(
 		"theme",
-		ThemeKind.BACKEND_DEVELOPER,
+		ThemeKind.DEFAULT,
 		{
 			deserializer: (value) => Theme.parse(value),
 			serializer: (value) => value.toString(),
