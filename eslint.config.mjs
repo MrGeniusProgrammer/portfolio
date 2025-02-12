@@ -14,7 +14,11 @@ const eslintConfig = [
 	...compat.config({
 		rules: {
 			"@typescript-eslint/no-explicit-any": "off",
-			"@typescript-eslint/no-unused-vars": "off"
+			"@typescript-eslint/no-unused-vars": "off",
+			"import/prefer-default-export": "off",
+			"no-console": "warn",
+			"no-var": "error",
+			"no-html-link-for-pages": "off"
 		}
 	})
 ];
