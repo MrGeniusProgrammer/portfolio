@@ -2,6 +2,7 @@
 
 import { Canvas, useFrame } from "@react-three/fiber";
 import React from "react";
+import { Button } from "./ui/button";
 
 function RotatingCube() {
 	// Reference to the mesh to update rotation each frame.
@@ -35,9 +36,7 @@ export function HeroSection() {
 						I'm a developer who crafts amazing experiences through
 						code. Explore my work and get in touch!
 					</p>
-					<button className="rounded-full bg-blue-600 px-6 py-3 hover:bg-blue-700">
-						Get Started
-					</button>
+					<Button>Get STarted</Button>
 				</div>
 				{/* Right side: Three.js scene */}
 				<div className="relative lg:w-1/2">
