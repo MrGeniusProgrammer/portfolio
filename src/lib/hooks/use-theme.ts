@@ -2,29 +2,27 @@
 
 import React from "react";
 import { useLocalStorage } from "react-use";
-import { Theme, ThemeKind } from "../entities/theme";
+import { defaultThemeConfigs, Theme, ThemeKind } from "../entities/theme";
+import { applyThemeConfig } from "../helpers/theme";
 
 export function useTheme() {
-	// Initialize theme state with a default value
 	const [theme, setTheme] = useLocalStorage<ThemeKind>(
 		"theme",
 		ThemeKind.DEFAULT,
 		{
-			deserializer: (value) => Theme.parse(value),
+			deserializer: (value) => Theme.parse(Number(value)),
 			serializer: (value) => value.toString(),
 			raw: false
 		}
 	);
 
-	// Whenever the theme changes, update the root element's class name.
 	React.useEffect(() => {
-		// Remove any previously set theme classes that start with "theme-"
-		Array.from(document.body.classList)
-			.filter((cls) => cls.startsWith("theme-"))
-			.forEach((cls) => document.body.classList.remove(cls));
+		if (theme === undefined) {
+			return;
+		}
 
-		document.body.classList.add(`theme-${theme}`);
+		applyThemeConfig(defaultThemeConfigs[theme]);
 	}, [theme]);
 
-	return [theme, setTheme];
+	return [theme, setTheme] as const;
 }

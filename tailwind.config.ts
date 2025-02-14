@@ -1,13 +1,26 @@
 import tailwindcssAspectRatio from "@tailwindcss/aspect-ratio";
-import tailwindcssForms from "@tailwindcss/forms";
-import tailwindcssTypography from "@tailwindcss/typography";
 import type { Config } from "tailwindcss";
 import tailwindcssAnimate from "tailwindcss-animate";
-import { ThemeKind } from "./src/lib/entities/theme";
 import { tailwindcssScale } from "./tailwindcss-scale";
-import { tailwindcssThemeColors } from "./tailwindcss-theme-colors";
 
-export default {
+const getShades = (name: string, shades: number[]) =>
+	Object.fromEntries(
+		shades.map((shade) => [`${name}-${shade}`, `var(--${name}-${shade})`])
+	);
+
+const getThemeColorNames = (prefix: string, shades: number[]) => ({
+	...getShades(`${prefix}-primary`, shades),
+	...getShades(`${prefix}-secondary`, shades),
+	...getShades(`${prefix}-teritary`, shades),
+	...getShades(`${prefix}-neutral-variant`, shades),
+	...getShades(`${prefix}-neutral`, shades),
+	...getShades(`${prefix}-error`, shades),
+	...getShades(`${prefix}-warn`, shades),
+	...getShades(`${prefix}-info`, shades),
+	...getShades(`${prefix}-success`, shades)
+});
+
+const config: Config = {
 	content: [
 		"./src/pages/**/*.{js,ts,jsx,tsx,mdx}",
 		"./src/components/**/*.{js,ts,jsx,tsx,mdx}",
@@ -15,6 +28,12 @@ export default {
 	],
 	theme: {
 		extend: {
+			colors: {
+				...getThemeColorNames(
+					"md",
+					[5, 10, 20, 30, 40, 50, 60, 70, 80, 90, 95, 98]
+				)
+			},
 			keyframes: {
 				"accordion-down": {
 					from: {
@@ -59,30 +78,8 @@ export default {
 			ratio: 1.676
 		}),
 		tailwindcssAnimate,
-		tailwindcssAspectRatio,
-		tailwindcssTypography(),
-		tailwindcssForms(),
-		tailwindcssThemeColors({
-			palleteTones: [5, 10, 20, 30, 40, 50, 60, 70, 80, 90, 95],
-			processVariableName: (value) => `mc-${value}`,
-			themes: {
-				[ThemeKind.DEFAULT]: {
-					sourceColor: "#6750A4",
-					customColors: {}
-				},
-				[ThemeKind.BACKEND_DEVELOPER]: {
-					sourceColor: "#0f0f0f"
-				},
-				[ThemeKind.FULLSTACK_DEVELOPER]: {
-					sourceColor: "#ffffff"
-				},
-				[ThemeKind.UX_DEVELOPER]: {
-					sourceColor: "#f0f0f0"
-				},
-				[ThemeKind.UI_DEVELOPER]: {
-					sourceColor: "#000000"
-				}
-			}
-		})
+		tailwindcssAspectRatio
 	]
-} satisfies Config;
+};
+
+export default config;
