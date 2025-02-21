@@ -19,33 +19,33 @@ export const applyThemeConfig = (themeConfig: ThemeConfig) => {
 		}))
 	);
 
-	let css = ":root {\n";
+	const target = document.body;
 
 	for (const [key, palette] of Object.entries(theme.palettes)) {
 		for (const tone of paletteTones) {
 			const color = hexFromArgb(palette.tone(tone));
-			css += `  --md-${getKebabCaseFromCamelCase(key)}-${tone}: ${color};\n`;
+			target.style.setProperty(
+				`--md-palette-${getKebabCaseFromCamelCase(key)}-${tone}`,
+				color
+			);
 		}
 	}
 
-	for (const [key, value] of Object.entries(theme.schemes.light.toJSON())) {
-		const color = hexFromArgb(value);
-		css += `  --md-${getKebabCaseFromCamelCase(key)}: ${color};\n`;
+	for (const [key, lightValue] of Object.entries(
+		theme.schemes.light.toJSON()
+	)) {
+		const lightColor = hexFromArgb(lightValue);
+		const darkValue =
+			theme.schemes.dark.toJSON()[
+				key as unknown as keyof ReturnType<
+					typeof theme.schemes.dark.toJSON
+				>
+			];
+		const darkColor = hexFromArgb(darkValue);
+		const name = getKebabCaseFromCamelCase(key);
+		target.style.setProperty(
+			`--md-ref-${name}`,
+			`ligh-dark(${lightColor}, ${darkColor})`
+		);
 	}
-
-	css += "}\n\n.dark {\n";
-
-	for (const [key, value] of Object.entries(theme.schemes.dark.toJSON())) {
-		const color = hexFromArgb(value);
-		css += `  --md-${getKebabCaseFromCamelCase(key)}: ${color};\n`;
-	}
-	css += "}";
-
-	let styleTag = document.getElementById("dynamic-theme-style");
-	if (!styleTag) {
-		styleTag = document.createElement("style");
-		styleTag.id = "dynamic-theme-style";
-		document.head.appendChild(styleTag);
-	}
-	styleTag.textContent = css;
 };
