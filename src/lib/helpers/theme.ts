@@ -44,8 +44,9 @@ export const applyThemeConfig = (themeConfig: ThemeConfig) => {
 		const darkColor = hexFromArgb(darkValue);
 		const name = getKebabCaseFromCamelCase(key);
 		target.style.setProperty(
-			`--md-ref-${name}`,
-			`ligh-dark(${lightColor}, ${darkColor})`
+			`--md-${name}`,
+			`${lightColor}`
+			// `ligh-dark(${lightColor}, ${darkColor})`
 		);
 	}
 };

@@ -1,2 +1,12 @@
 @import "tailwindcss";
 @config "../../tailwind.config.ts";
+
+@layer theme {
+	:not(.dark) {
+		color-scheme: light;
+	}
+
+	.dark {
+		color-scheme: dark;
+	}
+}

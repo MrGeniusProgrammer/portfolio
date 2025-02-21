@@ -1,27 +1,7 @@
 "use client";
 
-import { Canvas, useFrame } from "@react-three/fiber";
 import React from "react";
 import { Button } from "./ui/button";
-
-function RotatingCube() {
-	// Reference to the mesh to update rotation each frame.
-	const meshRef = React.useRef<any>(null);
-
-	useFrame(() => {
-		if (meshRef.current) {
-			meshRef.current.rotation.x += 0.01;
-			meshRef.current.rotation.y += 0.01;
-		}
-	});
-
-	return (
-		<mesh ref={meshRef}>
-			<boxGeometry args={[1, 1, 1]} />
-			<meshStandardMaterial color="orange" />
-		</mesh>
-	);
-}
 
 export function HeroSection() {
 	return (
@@ -39,19 +19,6 @@ export function HeroSection() {
 					<Button>Get STarted</Button>
 				</div>
 				{/* Right side: Three.js scene */}
-				<div className="relative lg:w-1/2">
-					{/* Title behind the Three.js object */}
-					<div className="pointer-events-none absolute inset-0 flex items-center justify-center">
-						<h2 className="text-6xl font-bold opacity-20">
-							Fullstack Developer
-						</h2>
-					</div>
-					<Canvas className="h-96 w-full">
-						<ambientLight intensity={0.5} />
-						<pointLight position={[10, 10, 10]} />
-						<RotatingCube />
-					</Canvas>
-				</div>
 			</div>
 		</div>
 	);

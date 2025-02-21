@@ -51,8 +51,8 @@ const getThemeColorNames = (prefix: string, shades: number[]) => {
 
 	const refColors = Object.fromEntries(
 		refColorList.map((name) => [
-			`${prefix}-ref-${name}`,
-			`var(--${prefix}-ref-${name})`
+			`${prefix}-${name}`,
+			`var(--${prefix}-${name})`
 		])
 	);
 
@@ -284,7 +284,7 @@ export const tailwindcssDesignSystem = (userOpt?: DeepPartial<Options>) => {
 	const opt = merge(defaultOpt, (userOpt ?? {}) as unknown as Options);
 
 	// Generate the fontSize configuration from the typography system.
-	const fontSizeConfig = Object.entries(opt.typograpy).reduce(
+	const fontSizeConfig = Object.entries(opt.typography).reduce(
 		(acc, [type, { sizes }]) => {
 			Object.entries(sizes).forEach(([size, config]) => {
 				// Create a key in the form of `${prefix}-${type}-${size}`.
@@ -314,7 +314,7 @@ export const tailwindcssDesignSystem = (userOpt?: DeepPartial<Options>) => {
 	);
 
 	// Generate the fontSize configuration from the typography system.
-	const fontFamilyConfig = Object.entries(opt.typograpy).reduce(
+	const fontFamilyConfig = Object.entries(opt.typography).reduce(
 		(acc, [type, { fontFamily }]) => {
 			const key = `${opt.prefix}-${type}`;
 			acc[key] = fontFamily;
