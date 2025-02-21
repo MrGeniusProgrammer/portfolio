@@ -2,7 +2,6 @@ import tailwindcssAspectRatio from "@tailwindcss/aspect-ratio";
 import type { Config } from "tailwindcss";
 import tailwindcssAnimate from "tailwindcss-animate";
 import { tailwindcssDesignSystem } from "./tailwind-design-system";
-import { tailwindcssScale } from "./tailwindcss-scale";
 
 const config: Config = {
 	content: [
@@ -37,24 +36,6 @@ const config: Config = {
 		}
 	},
 	plugins: [
-		tailwindcssScale({
-			base: 1,
-			processVariableName: (value) => `scale-${value}`,
-			sizeVariableNames: [
-				"4xs",
-				"3xs",
-				"2xs",
-				"xs",
-				"sm",
-				"md",
-				"lg",
-				"xl",
-				"2xl",
-				"3xl",
-				"4xl"
-			],
-			ratio: 1.676
-		}),
 		tailwindcssAnimate,
 		tailwindcssAspectRatio,
 		tailwindcssDesignSystem({
