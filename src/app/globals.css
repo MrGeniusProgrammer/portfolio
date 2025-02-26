@@ -1,12 +1,503 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
 @import "tailwindcss";
-@config "../../tailwind.config.ts";
+@plugin "tailwindcss-animate";
 
-@layer theme {
+:root {
+	--primary-50: var(--color-sky-50);
+	--primary-100: var(--color-sky-100);
+	--primary-200: var(--color-sky-200);
+	--primary-300: var(--color-sky-300);
+	--primary-400: var(--color-sky-400);
+	--primary-500: var(--color-sky-500);
+	--primary-600: var(--color-sky-600);
+	--primary-700: var(--color-sky-700);
+	--primary-800: var(--color-sky-800);
+	--primary-900: var(--color-sky-900);
+	--primary-950: var(--color-sky-950);
+
+	--neutral-50: var(--color-neutral-50);
+	--neutral-100: var(--color-neutral-100);
+	--neutral-200: var(--color-neutral-200);
+	--neutral-300: var(--color-neutral-300);
+	--neutral-400: var(--color-neutral-400);
+	--neutral-500: var(--color-neutral-500);
+	--neutral-600: var(--color-neutral-600);
+	--neutral-700: var(--color-neutral-700);
+	--neutral-800: var(--color-neutral-800);
+	--neutral-900: var(--color-neutral-900);
+	--neutral-950: var(--color-neutral-950);
+
+	--font-brand: "Roboto", sans-serif;
+	--font-plain: var(--font-mono);
+
+	/* Display */
+	--display-lg-font-family: var(--font-brand);
+	--display-lg-font-size: 57px;
+	--display-lg-font-weight: 400;
+	--display-lg-letter-spacing: -0.25px;
+	--display-lg-line-height: 64px;
+
+	--display-md-font-family: var(--font-brand);
+	--display-md-font-size: 45px;
+	--display-md-font-weight: 400;
+	--display-md-letter-spacing: 0px;
+	--display-md-line-height: 52px;
+
+	--display-sm-font-family: var(--font-brand);
+	--display-sm-font-size: 36px;
+	--display-sm-font-weight: 400;
+	--display-sm-letter-spacing: 0px;
+	--display-sm-line-height: 44px;
+
+	/* Headline */
+	--headline-lg-font-family: var(--font-brand);
+	--headline-lg-font-size: 32px;
+	--headline-lg-font-weight: 400;
+	--headline-lg-letter-spacing: 0px;
+	--headline-lg-line-height: 40px;
+
+	--headline-md-font-family: var(--font-brand);
+	--headline-md-font-size: 28px;
+	--headline-md-font-weight: 400;
+	--headline-md-letter-spacing: 0px;
+	--headline-md-line-height: 36px;
+
+	--headline-sm-font-family: var(--font-brand);
+	--headline-sm-font-size: 24px;
+	--headline-sm-font-weight: 400;
+	--headline-sm-letter-spacing: 0px;
+	--headline-sm-line-height: 32px;
+
+	/* Title */
+	--title-lg-font-family: var(--font-plain);
+	--title-lg-font-size: 22px;
+	--title-lg-font-weight: 400;
+	--title-lg-letter-spacing: 0px;
+	--title-lg-line-height: 28px;
+
+	--title-md-font-family: var(--font-plain);
+	--title-md-font-size: 16px;
+	--title-md-font-weight: 500;
+	--title-md-letter-spacing: 0.1px;
+	--title-md-line-height: 24px;
+
+	--title-sm-font-family: var(--font-plain);
+	--title-sm-font-size: 14px;
+	--title-sm-font-weight: 500;
+	--title-sm-letter-spacing: 0.1px;
+	--title-sm-line-height: 20px;
+
+	/* Body */
+	--body-lg-font-family: var(--font-plain);
+	--body-lg-font-size: 16px;
+	--body-lg-font-weight: 400;
+	--body-lg-letter-spacing: 0.5px;
+	--body-lg-line-height: 24px;
+
+	--body-md-font-family: var(--font-plain);
+	--body-md-font-size: 14px;
+	--body-md-font-weight: 400;
+	--body-md-letter-spacing: 0.25px;
+	--body-md-line-height: 20px;
+
+	--body-sm-font-family: var(--font-plain);
+	--body-sm-font-size: 12px;
+	--body-sm-font-weight: 400;
+	--body-sm-letter-spacing: 0.4px;
+	--body-sm-line-height: 16px;
+
+	/* Label */
+	--label-lg-font-family: var(--font-plain);
+	--label-lg-font-size: 14px;
+	--label-lg-font-weight: 500;
+	--label-lg-letter-spacing: 0.1px;
+	--label-lg-line-height: 20px;
+
+	--label-md-font-family: var(--font-plain);
+	--label-md-font-size: 11px;
+	--label-md-font-weight: 500;
+	--label-md-letter-spacing: 0.5px;
+	--label-md-line-height: 16px;
+
+	--label-sm-font-family: var(--font-plain);
+	--label-sm-font-size: 10px;
+	--label-sm-font-weight: 500;
+	--label-sm-letter-spacing: 0.5px;
+	--label-sm-line-height: 16px;
+
+	/*
+	 * For values between 950 and 700, the hovered state is a half step lighter. 
+	 * For values between 600 and 50, the hovered state is a half step darker.
+	 */
+	--primary-hovered-50: var(--primary-100);
+	--primary-hovered-100: var(--primary-200);
+	--primary-hovered-200: var(--primary-300);
+	--primary-hovered-300: var(--primary-400);
+	--primary-hovered-400: var(--primary-500);
+	--primary-hovered-500: var(--primary-600);
+	--primary-hovered-600: var(--primary-700);
+	--primary-hovered-700: var(--primary-600);
+	--primary-hovered-800: var(--primary-700);
+	--primary-hovered-900: var(--primary-800);
+	--primary-hovered-950: var(--primary-900);
+
+	/*
+	 * For values between 950 and 700, the active state is two full steps lighter.
+	 * For values between 600 and 100, the active state is two full steps darker.
+	 */
+	--primary-active-50: var(--primary-200);
+	--primary-active-100: var(--primary-300);
+	--primary-active-200: var(--primary-400);
+	--primary-active-300: var(--primary-500);
+	--primary-active-400: var(--primary-600);
+	--primary-active-500: var(--primary-700);
+	--primary-active-600: var(--primary-800);
+	--primary-active-700: var(--primary-500);
+	--primary-active-800: var(--primary-600);
+	--primary-active-900: var(--primary-700);
+	--primary-active-950: var(--primary-800);
+
+	/*
+	 * For values between 950 and 700, the selected state is a full step lighter. 
+	 * For values between 600 and 100, the selected state is a full step darker.
+	 */
+	--primary-selected-50: var(--primary-100);
+	--primary-selected-100: var(--primary-200);
+	--primary-selected-200: var(--primary-300);
+	--primary-selected-300: var(--primary-400);
+	--primary-selected-400: var(--primary-500);
+	--primary-selected-500: var(--primary-600);
+	--primary-selected-600: var(--primary-700);
+	--primary-selected-700: var(--primary-600);
+	--primary-selected-800: var(--primary-700);
+	--primary-selected-900: var(--primary-800);
+	--primary-selected-950: var(--primary-900);
+
+	/*
+	 * For values between 950 and 700, the focused state is a full step lighter. 
+	 * For values between 600 and 100, the focused state is a full step darker.
+	 */
+	--primary-focused-50: var(--primary-100);
+	--primary-focused-100: var(--primary-200);
+	--primary-focused-200: var(--primary-300);
+	--primary-focused-300: var(--primary-400);
+	--primary-focused-400: var(--primary-500);
+	--primary-focused-500: var(--primary-600);
+	--primary-focused-600: var(--primary-700);
+	--primary-focused-700: var(--primary-600);
+	--primary-focused-800: var(--primary-700);
+	--primary-focused-900: var(--primary-800);
+	--primary-focused-950: var(--primary-900);
+
+	/*
+	 * For values between 950 and 700, the pressed state is a 3 full step lighter. 
+	 * For values between 600 and 100, the pressed state is a 3 full step darker.
+	 */
+	--primary-pressed-50: var(--primary-200);
+	--primary-pressed-100: var(--primary-300);
+	--primary-pressed-200: var(--primary-400);
+	--primary-pressed-300: var(--primary-500);
+	--primary-pressed-400: var(--primary-600);
+	--primary-pressed-500: var(--primary-700);
+	--primary-pressed-600: var(--primary-800);
+	--primary-pressed-700: var(--primary-400);
+	--primary-pressed-800: var(--primary-500);
+	--primary-pressed-900: var(--primary-600);
+	--primary-pressed-950: var(--primary-700);
+
+	/*
+	 * 500 is the base and lower than that is light mode and higher than that is dark 
+	 * mode they must be symterically aligned from the base
+	 */
+	--primary: light-dark(var(--primary-400), var(--primary-600));
+	--primary-focused: light-dark(
+		var(--primary-focused-400),
+		var(--primary-focused-600)
+	);
+	--primary-hovered: light-dark(
+		var(--primary-hovered-400),
+		var(--primary-hovered-600)
+	);
+	--primary-selected: light-dark(
+		var(--primary-selected-400),
+		var(--primary-selected-600)
+	);
+	--primary-pressed: light-dark(
+		var(--primary-pressed-400),
+		var(--primary-pressed-600)
+	);
+
+	--on-primary: light-dark(var(--primary-950), var(--primary-200));
+
+	--primary-container: light-dark(var(--primary-900), var(--primary-300));
+	--primary-container-focused: light-dark(
+		var(--primary-container-focused-900),
+		var(--primary-container-focused-300)
+	);
+	--primary-container-hovered: light-dark(
+		var(--primary-container-hovered-900),
+		var(--primary-container-hovered-300)
+	);
+	--primary-container-selected: light-dark(
+		var(--primary-container-selected-900),
+		var(--primary-container-selected-300)
+	);
+	--primary-container-pressed: light-dark(
+		var(--primary-container-pressed-900),
+		var(--primary-container-pressed-300)
+	);
+
+	--on-primary-container: light-dark(var(--primary-300), var(--primary-900));
+
+	--surface-lowest: light-dark(var(--neutral-500), var(--neutral-300));
+	--surface-low: light-dark(var(--neutral-600), var(--neutral-400));
+	--surface: light-dark(var(--neutral-700), var(--neutral-500));
+	--surface-high: light-dark(var(--neutral-800), var(--neutral-600));
+	--surface-highest: light-dark(var(--neutral-900), var(--neutral-700));
+	--on-surface: light-dark(var(--neutral-50), var(--neutral-950));
+}
+
+@theme inline {
+	--color-primary-50: var(--primary-50);
+	--color-primary-100: var(--primary-100);
+	--color-primary-200: var(--primary-200);
+	--color-primary-300: var(--primary-300);
+	--color-primary-400: var(--primary-400);
+	--color-primary-500: var(--primary-500);
+	--color-primary-600: var(--primary-600);
+	--color-primary-700: var(--primary-700);
+	--color-primary-800: var(--primary-800);
+	--color-primary-900: var(--primary-900);
+	--color-primary-950: var(--primary-950);
+
+	--color-neutral-50: var(--neutral-50);
+	--color-neutral-100: var(--neutral-100);
+	--color-neutral-200: var(--neutral-200);
+	--color-neutral-300: var(--neutral-300);
+	--color-neutral-400: var(--neutral-400);
+	--color-neutral-500: var(--neutral-500);
+	--color-neutral-600: var(--neutral-600);
+	--color-neutral-700: var(--neutral-700);
+	--color-neutral-800: var(--neutral-800);
+	--color-neutral-900: var(--neutral-900);
+	--color-neutral-950: var(--neutral-950);
+
+	--font-brand: var(--font-brand);
+	--font-plain: var(--font-plain);
+
+	--color-primary-hovered-50: var(--primary-hovered-50);
+	--color-primary-hovered-100: var(--primary-hovered-100);
+	--color-primary-hovered-200: var(--primary-hovered-200);
+	--color-primary-hovered-300: var(--primary-hovered-300);
+	--color-primary-hovered-400: var(--primary-hovered-400);
+	--color-primary-hovered-500: var(--primary-hovered-500);
+	--color-primary-hovered-600: var(--primary-hovered-600);
+	--color-primary-hovered-700: var(--primary-hovered-700);
+	--color-primary-hovered-800: var(--primary-hovered-800);
+	--color-primary-hovered-900: var(--primary-hovered-900);
+	--color-primary-hovered-950: var(--primary-hovered-950);
+
+	--color-primary-active-50: var(--primary-active-50);
+	--color-primary-active-100: var(--primary-active-100);
+	--color-primary-active-200: var(--primary-active-200);
+	--color-primary-active-300: var(--primary-active-300);
+	--color-primary-active-400: var(--primary-active-400);
+	--color-primary-active-500: var(--primary-active-500);
+	--color-primary-active-600: var(--primary-active-600);
+	--color-primary-active-700: var(--primary-active-700);
+	--color-primary-active-800: var(--primary-active-800);
+	--color-primary-active-900: var(--primary-active-900);
+	--color-primary-active-950: var(--primary-active-950);
+
+	--color-primary-selected-50: var(--primary-selected-50);
+	--color-primary-selected-100: var(--primary-selected-100);
+	--color-primary-selected-200: var(--primary-selected-200);
+	--color-primary-selected-300: var(--primary-selected-300);
+	--color-primary-selected-400: var(--primary-selected-400);
+	--color-primary-selected-500: var(--primary-selected-500);
+	--color-primary-selected-600: var(--primary-selected-600);
+	--color-primary-selected-700: var(--primary-selected-700);
+	--color-primary-selected-800: var(--primary-selected-800);
+	--color-primary-selected-900: var(--primary-selected-900);
+	--color-primary-selected-950: var(--primary-selected-950);
+
+	--color-primary-focused-50: var(--primary-focused-50);
+	--color-primary-focused-100: var(--primary-focused-100);
+	--color-primary-focused-200: var(--primary-focused-200);
+	--color-primary-focused-300: var(--primary-focused-300);
+	--color-primary-focused-400: var(--primary-focused-400);
+	--color-primary-focused-500: var(--primary-focused-500);
+	--color-primary-focused-600: var(--primary-focused-600);
+	--color-primary-focused-700: var(--primary-focused-700);
+	--color-primary-focused-800: var(--primary-focused-800);
+	--color-primary-focused-900: var(--primary-focused-900);
+	--color-primary-focused-950: var(--primary-focused-950);
+
+	--color-primary-pressed-50: var(--primary-pressed-50);
+	--color-primary-pressed-100: var(--primary-pressed-100);
+	--color-primary-pressed-200: var(--primary-pressed-200);
+	--color-primary-pressed-300: var(--primary-pressed-300);
+	--color-primary-pressed-400: var(--primary-pressed-400);
+	--color-primary-pressed-500: var(--primary-pressed-500);
+	--color-primary-pressed-600: var(--primary-pressed-600);
+	--color-primary-pressed-700: var(--primary-pressed-700);
+	--color-primary-pressed-800: var(--primary-pressed-800);
+	--color-primary-pressed-900: var(--primary-pressed-900);
+	--color-primary-pressed-950: var(--primary-pressed-950);
+
+	--color-primary: var(--primary);
+	--color-primary-focused: var(--primary-focused);
+	--color-primary-hovered: var(--primary-hovered);
+	--color-primary-selected: var(--primary-selected);
+	--color-primary-pressed: var(--primary-pressed);
+	--color-on-primary: var(--on-primary);
+
+	--color-primary-container: var(--primary-container);
+	--color-primary-container-focused: var(--primary-container-focused);
+	--color-primary-container-hovered: var(--primary-container-hovered);
+	--color-primary-container-selected: var(--primary-container-selected);
+	--color-primary-container-pressed: var(--primary-container-pressed);
+	--color-on-primary-container: var(--on-primary-container);
+
+	--color-surface-lowest: var(--surface-lowest);
+	--color-surface-low: var(--surface-low);
+	--color-surface: var(--surface);
+	--color-surface-high: var(--surface-high);
+	--color-surface-highest: var(--surface-highest);
+	--color-on-surface: var(--on-surface);
+}
+
+@layer base {
 	:not(.dark) {
 		color-scheme: light;
 	}
 
 	.dark {
 		color-scheme: dark;
+	}
+
+	/* Display */
+	.text-display-lg {
+		font-family: var(--display-lg-font-family);
+		font-size: var(--display-lg-font-size);
+		font-weight: var(--display-lg-font-weight);
+		letter-spacing: var(--display-lg-letter-spacing);
+		line-height: var(--display-lg-line-height);
+	}
+
+	.text-display-md {
+		font-family: var(--display-md-font-family);
+		font-size: var(--display-md-font-size);
+		font-weight: var(--display-md-font-weight);
+		letter-spacing: var(--display-md-letter-spacing);
+		line-height: var(--display-md-line-height);
+	}
+
+	.text-display-sm {
+		font-family: var(--display-sm-font-family);
+		font-size: var(--display-sm-font-size);
+		font-weight: var(--display-sm-font-weight);
+		letter-spacing: var(--display-sm-letter-spacing);
+		line-height: var(--display-sm-line-height);
+	}
+
+	/* Headline */
+	.text-headline-lg {
+		font-family: var(--headline-lg-font-family);
+		font-size: var(--headline-lg-font-size);
+		font-weight: var(--headline-lg-font-weight);
+		letter-spacing: var(--headline-lg-letter-spacing);
+		line-height: var(--headline-lg-line-height);
+	}
+
+	.text-headline-md {
+		font-family: var(--headline-md-font-family);
+		font-size: var(--headline-md-font-size);
+		font-weight: var(--headline-md-font-weight);
+		letter-spacing: var(--headline-md-letter-spacing);
+		line-height: var(--headline-md-line-height);
+	}
+
+	.text-headline-sm {
+		font-family: var(--headline-sm-font-family);
+		font-size: var(--headline-sm-font-size);
+		font-weight: var(--headline-sm-font-weight);
+		letter-spacing: var(--headline-sm-letter-spacing);
+		line-height: var(--headline-sm-line-height);
+	}
+
+	/* Title */
+	.text-title-lg {
+		font-family: var(--title-lg-font-family);
+		font-size: var(--title-lg-font-size);
+		font-weight: var(--title-lg-font-weight);
+		letter-spacing: var(--title-lg-letter-spacing);
+		line-height: var(--title-lg-line-height);
+	}
+
+	.text-title-md {
+		font-family: var(--title-md-font-family);
+		font-size: var(--title-md-font-size);
+		font-weight: var(--title-md-font-weight);
+		letter-spacing: var(--title-md-letter-spacing);
+		line-height: var(--title-md-line-height);
+	}
+
+	.text-title-sm {
+		font-family: var(--title-sm-font-family);
+		font-size: var(--title-sm-font-size);
+		font-weight: var(--title-sm-font-weight);
+		letter-spacing: var(--title-sm-letter-spacing);
+		line-height: var(--title-sm-line-height);
+	}
+
+	/* Body */
+	.text-body-lg {
+		font-family: var(--body-lg-font-family);
+		font-size: var(--body-lg-font-size);
+		font-weight: var(--body-lg-font-weight);
+		letter-spacing: var(--body-lg-letter-spacing);
+		line-height: var(--body-lg-line-height);
+	}
+
+	.text-body-md {
+		font-family: var(--body-md-font-family);
+		font-size: var(--body-md-font-size);
+		font-weight: var(--body-md-font-weight);
+		letter-spacing: var(--body-md-letter-spacing);
+		line-height: var(--body-md-line-height);
+	}
+
+	.text-body-sm {
+		font-family: var(--body-sm-font-family);
+		font-size: var(--body-sm-font-size);
+		font-weight: var(--body-sm-font-weight);
+		letter-spacing: var(--body-sm-letter-spacing);
+		line-height: var(--body-sm-line-height);
+	}
+
+	/* Label */
+	.text-label-lg {
+		font-family: var(--label-lg-font-family);
+		font-size: var(--label-lg-font-size);
+		font-weight: var(--label-lg-font-weight);
+		letter-spacing: var(--label-lg-letter-spacing);
+		line-height: var(--label-lg-line-height);
+	}
+
+	.text-label-md {
+		font-family: var(--label-md-font-family);
+		font-size: var(--label-md-font-size);
+		font-weight: var(--label-md-font-weight);
+		letter-spacing: var(--label-md-letter-spacing);
+		line-height: var(--label-md-line-height);
+	}
+
+	.text-label-sm {
+		font-family: var(--label-sm-font-family);
+		font-size: var(--label-sm-font-size);
+		font-weight: var(--label-sm-font-weight);
+		letter-spacing: var(--label-sm-letter-spacing);
+		line-height: var(--label-sm-line-height);
 	}
 }

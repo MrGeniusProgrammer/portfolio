@@ -16,7 +16,7 @@ export function HeroSection() {
 						I'm a developer who crafts amazing experiences through
 						code. Explore my work and get in touch!
 					</p>
-					<Button>Get STarted</Button>
+					<Button size="sm">Get STarted</Button>
 				</div>
 				{/* Right side: Three.js scene */}
 			</div>

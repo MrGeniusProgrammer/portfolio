@@ -21,9 +21,9 @@ const buttonVariants = cva(
 				error: ""
 			},
 			size: {
-				sm: "h-8 px-4 rounded-sm text-md-label-sm",
-				md: "h-10 px-6 rounded-md text-md-label-md",
-				lg: "h-12 px-8 rounded-lg text-md-label-lg"
+				sm: "h-md-xl px-md-md rounded-sm text-md-label-sm",
+				md: "h-md-xl px-md-md rounded-md text-md-label-md",
+				lg: "h-md-xl px-md-md rounded-lg text-md-label-lg"
 			}
 		},
 		compoundVariants: [
